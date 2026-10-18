@@ -8,42 +8,77 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Source+Serif+4:wght@400;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="dist/output.css">
 </head>
 
 <body>
-  <header>
-    <strong>DAC</strong>
-    <nav aria-label="Main">
-      <a href="#about">About DAC</a><a href="#gallery">Gallery</a><a href="#ncc">NCC &amp; Forces</a><a href="#ssb">SSB
-        Guidance</a><a href="#events">Events</a><a href="#visits">Visits</a><a href="#national">National Days</a>
+
+  <!-- FLOATING NAVBAR -->
+  <header class="fixed inset-x-0 top-[max(1rem,env(safe-area-inset-top))] z-50 px-4">
+    <nav aria-label="Main"
+      class="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-line bg-surface/95 px-6 py-3 text-ink shadow-lg backdrop-blur">
+
+      <a href="#" class="flex items-center gap-2">
+        <img src="assets/logo/dac_logo.png" alt="" class="h-9 w-auto">
+        <span class="font-display text-2xl font-bold tracking-wider">DAC</span>
+      </a>
+
+      <ul class="hidden items-center gap-6 text-[15px] font-medium lg:flex">
+        <li><a href="#about" class="nav-link">About DAC</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#ncc" class="nav-link">NCC &amp; Forces</a></li>
+        <li><a href="#ssb" class="nav-link">SSB Guidance</a></li>
+        <li><a href="#events" class="nav-link">Events</a></li>
+        <li><a href="#visits" class="nav-link">Visits</a></li>
+        <li><a href="#national" class="nav-link">National Days</a></li>
+      </ul>
+
+      <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden">
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          viewBox="0 0 24 24">
+          <path d="M4 7h16M8 12h12M4 17h16" />
+        </svg>
+      </button>
     </nav>
+
+    <div id="mobile-menu"
+      class="mx-auto mt-2 hidden max-w-6xl rounded-3xl border border-line bg-surface p-6 text-ink shadow-lg lg:hidden">
+      <ul class="flex flex-col gap-3 text-lg font-medium">
+        <li><a href="#about" class="block py-1">About DAC</a></li>
+        <li><a href="#gallery" class="block py-1">Gallery</a></li>
+        <li><a href="#ncc" class="block py-1">NCC &amp; Forces</a></li>
+        <li><a href="#ssb" class="block py-1">SSB Guidance</a></li>
+        <li><a href="#events" class="block py-1">Events</a></li>
+        <li><a href="#visits" class="block py-1">Visits</a></li>
+        <li><a href="#national" class="block py-1">National Days</a></li>
+      </ul>
+    </div>
   </header>
 
   <main>
-    <div class="hero">
-      <div class="wrap">
-        <!-- DAC Logo -->
-        <img src="assets/logo/dac_logo.png" alt="DAC logo" width="450" height="470">
 
+    <!-- HERO -->
+    <section class="bg-olive px-5 pt-32 pb-20 text-on-olive">
+      <div class="mx-auto grid max-w-5xl items-center gap-9 sm:grid-cols-[auto_1fr]">
+        <img src="assets/logo/dac_logo.png" alt="DAC logo" width="450" height="470" class="h-auto w-48 sm:w-60 md:w-72">
         <div>
-          <h1>Defence Aspirant Club</h1>
-          <p>A student community that trains, guides and motivates young people who want to serve in the Indian Armed
-            Forces.</p>
-          <!-- <span class="motto">Jai Hind</span> -->
+          <h1 class="text-[clamp(3rem,11vw,7rem)] font-extrabold uppercase">Defence Aspirant Club</h1>
+          <p class="text-xl opacity-90">A student community that trains, guides and motivates young people who want
+            to serve in the Indian Armed Forces.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <section class="s" id="about">
-      <div class="wrap">
+    <!-- ABOUT -->
+    <section id="about" class="border-t border-line px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>About DAC</h2>
-        <p>The Defence Aspirant Club (DAC) brings together students who dream of a career in the Army, Navy, Air Force
-          and other uniformed services. We build the habits an officer needs: discipline, fitness, clear thinking and
-          confidence.</p>
+        <p>The Defence Aspirant Club (DAC) brings together students who dream of a career in the Army, Navy, Air
+          Force and other uniformed services. We build the habits an officer needs: discipline, fitness, clear
+          thinking and confidence.</p>
         <p>Our members prepare together through physical training, group discussions, expert lectures and visits to
           defence institutions.</p>
-        <div class="grid">
+        <div class="card-grid">
           <div class="card">
             <h3>Our mission</h3>
             <p>Prepare aspirants for NDA, CDS, AFCAT, NCC Special Entry and SSB with honest guidance and regular
@@ -51,55 +86,61 @@
           </div>
           <div class="card">
             <h3>What we do</h3>
-            <p>Fitness drills, mock GTO tasks, mock interviews, lectures by serving and retired personnel, and visits.
-            </p>
+            <p>Fitness drills, mock GTO tasks, mock interviews, lectures by serving and retired personnel, and
+              visits.</p>
           </div>
           <div class="card">
             <h3>Who can join</h3>
             <p>Any student with a sincere interest in the forces. NCC cadets and non-cadets are both welcome.</p>
           </div>
         </div>
-        <!-- <p class="note">Edit this section: add your club’s founding year, faculty advisor, president and member count.
-        </p> -->
       </div>
     </section>
 
-    <section class="s alt" id="gallery">
-      <div class="wrap">
+    <!-- GALLERY -->
+    <section id="gallery" class="border-t border-line bg-surface px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>Gallery</h2>
         <p>Moments from our drills, lectures, visits and celebrations.</p>
-        <div class="gal">
-          <figure>
-            <figcaption>Morning PT and drill</figcaption>
+        <div class="mt-7 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">Morning PT and drill</figcaption>
           </figure>
-          <figure>
-            <figcaption>Guest lecture</figcaption>
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">Guest lecture</figcaption>
           </figure>
-          <figure>
-            <figcaption>Mock GTO tasks</figcaption>
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">Mock GTO tasks</figcaption>
           </figure>
-          <figure>
-            <figcaption>Republic Day celebration</figcaption>
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">Republic Day celebration
+            </figcaption>
           </figure>
-          <figure>
-            <figcaption>NDA visit</figcaption>
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">NDA visit</figcaption>
           </figure>
-          <figure>
-            <figcaption>Mock SSB interview</figcaption>
+          <figure
+            class="flex aspect-[4/3] items-end border border-line bg-[image:repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">Mock SSB interview</figcaption>
           </figure>
         </div>
-        <!-- <p class="note">To add photos: replace each &lt;figure&gt; with &lt;figure&gt;&lt;img src="photo.jpg"
-          alt="description"&gt;&lt;figcaption&gt;Caption&lt;/figcaption&gt;&lt;/figure&gt;.</p> -->
       </div>
     </section>
 
-    <section class="s" id="ncc">
-      <div class="wrap">
+    <!-- NCC -->
+    <section id="ncc" class="border-t border-line px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>About NCC and the Defence Forces</h2>
-        <p>The National Cadet Corps (NCC) is the youth wing of the Indian Armed Forces, with Army, Naval and Air Wings.
-          Its motto is “Unity and Discipline.” Cadets learn drill, leadership, weapon training and social service, and
-          earn A, B and C certificates. The C certificate can give benefits in some entries to the forces.</p>
-        <div class="grid">
+        <p>The National Cadet Corps (NCC) is the youth wing of the Indian Armed Forces, with Army, Naval and Air
+          Wings. Its motto is “Unity and Discipline.” Cadets learn drill, leadership, weapon training and social
+          service, and earn A, B and C certificates. The C certificate can give benefits in some entries to the
+          forces.</p>
+        <div class="card-grid">
           <div class="card">
             <h3>Indian Army</h3>
             <p>Land force. Entry through NDA, CDS, TES, NCC Special Entry and more.</p>
@@ -121,93 +162,102 @@
       </div>
     </section>
 
-    <section class="s alt" id="ssb">
-      <div class="wrap">
+    <!-- SSB -->
+    <section id="ssb" class="border-t border-line bg-surface px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>SSB Interview Guidance</h2>
-        <p>The Services Selection Board (SSB) is a five-day assessment of personality, not just knowledge. We prepare
-          cadets for each stage through regular practice.</p>
-        <ol class="ssb">
-          <li>
-            <div><b>Screening</b><span>We run mock OIR (verbal and non-verbal reasoning) tests and picture perception
-                and discussion (PP&amp;DT) practice.</span></div>
+        <p>The Services Selection Board (SSB) is a five-day assessment of personality, not just knowledge. We
+          prepare cadets for each stage through regular practice.</p>
+        <ol class="ssb mt-7 grid gap-3.5">
+          <li class="ssb-item grid gap-0.5 border border-line bg-page px-4.5 py-3.5 sm:grid-cols-[64px_1fr] sm:gap-4">
+            <div><b class="font-semibold">Screening</b><span class="block text-base text-muted">We run mock OIR
+                (verbal and non-verbal reasoning) tests and picture perception and discussion (PP&amp;DT)
+                practice.</span></div>
           </li>
-          <li>
-            <div><b>Psychology tests</b><span>Weekly practice of TAT, WAT, SRT and Self Description to build quick,
-                natural and positive thinking.</span></div>
+          <li class="ssb-item grid gap-0.5 border border-line bg-page px-4.5 py-3.5 sm:grid-cols-[64px_1fr] sm:gap-4">
+            <div><b class="font-semibold">Psychology tests</b><span class="block text-base text-muted">Weekly
+                practice of TAT, WAT, SRT and Self Description to build quick, natural and positive
+                thinking.</span></div>
           </li>
-          <li>
-            <div><b>Group Testing Officer tasks</b><span>Group discussions, group planning exercise, progressive group
-                tasks and command tasks in the field.</span></div>
+          <li class="ssb-item grid gap-0.5 border border-line bg-page px-4.5 py-3.5 sm:grid-cols-[64px_1fr] sm:gap-4">
+            <div><b class="font-semibold">Group Testing Officer tasks</b><span class="block text-base text-muted">Group
+                discussions, group planning exercise, progressive group tasks and command tasks in the
+                field.</span></div>
           </li>
-          <li>
-            <div><b>Personal interview</b><span>Mock interviews with serving and retired officers, with feedback on
-                confidence and honesty.</span></div>
+          <li class="ssb-item grid gap-0.5 border border-line bg-page px-4.5 py-3.5 sm:grid-cols-[64px_1fr] sm:gap-4">
+            <div><b class="font-semibold">Personal interview</b><span class="block text-base text-muted">Mock
+                interviews with serving and retired officers, with feedback on confidence and honesty.</span></div>
           </li>
-          <li>
-            <div><b>Conference</b><span>Sessions on communication, current affairs, physical fitness and good daily
-                habits.</span></div>
+          <li class="ssb-item grid gap-0.5 border border-line bg-page px-4.5 py-3.5 sm:grid-cols-[64px_1fr] sm:gap-4">
+            <div><b class="font-semibold">Conference</b><span class="block text-base text-muted">Sessions on
+                communication, current affairs, physical fitness and good daily habits.</span></div>
           </li>
         </ol>
-        <!-- <p class="note">Add your own list: weekly practice timings, mentors’ names, and fitness targets.</p> -->
       </div>
     </section>
 
-    <section class="s" id="events">
-      <div class="wrap">
+    <!-- EVENTS -->
+    <section id="events" class="border-t border-line px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>Upcoming Events</h2>
         <p>Lectures and sessions by recommended candidates, serving officers and veterans.</p>
-        <ul class="ev">
-          <li><time>DD Mon<br>2026</time>
+        <ul class="mt-7 grid gap-3">
+          <li class="grid gap-1 border border-line bg-surface px-4.5 py-3.5 sm:grid-cols-[110px_1fr] sm:gap-4.5">
+            <time class="font-display text-[1.35rem] leading-[1.1] font-bold text-brass">DD Mon<br>2026</time>
             <div>
               <h3>Lecture by an NDA recommended candidate</h3>
-              <p>How I prepared, my SSB experience and mistakes to avoid. Venue and time to be added.</p>
+              <p class="my-[.2em] text-base text-muted">How I prepared, my SSB experience and mistakes to avoid.
+                Venue and time to be added.</p>
             </div>
           </li>
-          <li><time>DD Mon<br>2026</time>
+          <li class="grid gap-1 border border-line bg-surface px-4.5 py-3.5 sm:grid-cols-[110px_1fr] sm:gap-4.5">
+            <time class="font-display text-[1.35rem] leading-[1.1] font-bold text-brass">DD Mon<br>2026</time>
             <div>
               <h3>Talk by a serving Army officer</h3>
-              <p>Life in uniform and what the forces look for in an officer.</p>
+              <p class="my-[.2em] text-base text-muted">Life in uniform and what the forces look for in an officer.
+              </p>
             </div>
           </li>
-          <li><time>DD Mon<br>2026</time>
+          <li class="grid gap-1 border border-line bg-surface px-4.5 py-3.5 sm:grid-cols-[110px_1fr] sm:gap-4.5">
+            <time class="font-display text-[1.35rem] leading-[1.1] font-bold text-brass">DD Mon<br>2026</time>
             <div>
               <h3>Mock SSB day</h3>
-              <p>Group tasks, interviews and feedback, all in one day.</p>
+              <p class="my-[.2em] text-base text-muted">Group tasks, interviews and feedback, all in one day.</p>
             </div>
           </li>
         </ul>
-        <!-- <p class="note">Replace the placeholder dates, titles and speakers with your real schedule.</p> -->
       </div>
     </section>
 
-    <section class="s alt" id="visits">
-      <div class="wrap">
+    <!-- VISITS -->
+    <section id="visits" class="border-t border-line bg-surface px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>Visits</h2>
         <p>Seeing the forces up close is the best motivation. DAC members visit defence institutions and events.</p>
-        <div class="grid">
-          <div class="card">
+        <div class="card-grid">
+          <div class="card bg-page">
             <h3>NDA Passing Out Parade</h3>
             <p>Watch the cadets of the National Defence Academy march at the end of their training.</p>
           </div>
-          <div class="card">
+          <div class="card bg-page">
             <h3>Defence events</h3>
             <p>Air shows, military exhibitions, naval ship open days and army displays.</p>
           </div>
-          <div class="card">
+          <div class="card bg-page">
             <h3>Army, Navy and Air Force units</h3>
             <p>Interaction with personnel, and a look at equipment and daily routine.</p>
           </div>
         </div>
-        <!-- <p class="note">Add the date, place and photos of each visit you have done or plan.</p> -->
       </div>
     </section>
 
-    <section class="s" id="national">
-      <div class="wrap">
+    <!-- NATIONAL DAYS -->
+    <section id="national" class="border-t border-line px-5 py-18">
+      <div class="mx-auto max-w-5xl">
         <h2>Republic Day and Independence Day</h2>
-        <p>Every year DAC marks 26 January and 15 August with the respect they deserve. Our members take part and lead
-          the programme.</p>
-        <div class="grid">
+        <p>Every year DAC marks 26 January and 15 August with the respect they deserve. Our members take part and
+          lead the programme.</p>
+        <div class="card-grid">
           <div class="card">
             <h3>Flag hoisting</h3>
             <p>Ceremonial flag hoisting, national anthem and a guard of honour by DAC members.</p>
@@ -225,16 +275,28 @@
             <p>Blood donation, tree plantation and cleanliness drives in the spirit of service.</p>
           </div>
         </div>
-        <!-- <p class="note">Add photos and a short report from each year’s celebration.</p> -->
       </div>
     </section>
+
   </main>
 
-  <footer>
-    <!-- <span class="motto">Jai Hind</span> -->
-    <p style="margin:0 auto">Contact Here · Instagram Here</p>
-    <p style="margin:0 auto">Defence Aspirant Club (DAC)</p>
+  <footer class="bg-olive px-5 pt-11 pb-[calc(2.75rem+env(safe-area-inset-bottom))] text-center text-on-olive">
+    <p class="mx-auto my-0">Contact Here · Instagram Here</p>
+    <p class="mx-auto my-0">Defence Aspirant Club (DAC)</p>
   </footer>
+
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    function setMenu(open) {
+      menu.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', open);
+    }
+
+    btn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  </script>
 </body>
 
 </html>
