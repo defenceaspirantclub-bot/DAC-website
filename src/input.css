@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* 1. Your colours, as plain variables. Dark mode just swaps these values. */
+:root {
+  --page: #EDE8D8;
+  --surface: #F7F4EA;
+  --ink: #1F2A1C;
+  --muted: #55604F;
+  --olive: #2F3A2A;
+  --brass: #9A7A2C;
+  --line: #C9C2A8;
+  --on-olive: #EDE8D8;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #161B14;
+    --surface: #1F261C;
+    --ink: #ECE7D6;
+    --muted: #A9B2A0;
+    --olive: #2B3727;
+    --brass: #D2AE56;
+    --line: #38422F;
+    --on-olive: #ECE7D6;
+    color-scheme: dark;
+  }
+}
+
+/* 2. Tell Tailwind about them, so you can write bg-olive, text-brass, etc. */
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-olive: var(--olive);
+  --color-brass: var(--brass);
+  --color-line: var(--line);
+  --color-on-olive: var(--on-olive);
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+}
+
+/* 3. Base styles for plain tags (Tailwind removes the browser defaults) */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+  h2 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 800;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  p {
+    margin: 0.7em 0;
+    max-width: 68ch;
+  }
+  :focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 3px;
+  }
+}
+
+/* 4. Pieces that repeat many times get a name, so the HTML stays short */
+@layer components {
+  .nav-link {
+    @apply relative py-1 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-brass after:transition-transform after:duration-300 hover:after:scale-x-100;
+  }
+  .card {
+    @apply border-l-[5px] border-brass bg-surface px-5 py-4;
+  }
+  .card p {
+    @apply my-[.4em] text-base text-muted;
+  }
+  .card-grid {
+    @apply mt-7 grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5;
+  }
+
+  /* The "Day 1, Day 2..." numbering needs real CSS counters */
+  .ssb { counter-reset: d; }
+  .ssb-item { counter-increment: d; }
+  .ssb-item::before {
+    content: "Day " counter(d);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--brass);
+  }
+}
