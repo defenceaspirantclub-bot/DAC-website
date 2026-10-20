@@ -65,10 +65,11 @@
       <div class="mx-auto grid max-w-5xl items-center gap-9 sm:grid-cols-[auto_1fr]">
         <img src="assets/logo/DAC_LOGO.png" alt="DAC logo" width="450" height="470" class="h-auto w-48 sm:w-60 md:w-72">
         <div>
-          <p class="eyebrow">AISSMS IOIT · Pune</p>
           <h1 class="text-[clamp(3rem,11vw,7rem)] font-extrabold uppercase">Defence Aspirant Club</h1>
-          <p class="text-xl opacity-90">A student community that trains, guides and motivates young people who want
-            to serve in the Indian Armed Forces.</p>
+          <p class="text-xl opacity-90">A student community that trains, guides and motivates young people who want to
+            serve in the Indian Armed Forces.</p>
+
+          <!-- Buttons -->
           <div class="mt-8 flex flex-wrap gap-4">
             <a href="#contact" class="btn btn-primary">Join DAC</a>
             <a href="#about" class="btn btn-ghost">Our story</a>
@@ -85,13 +86,12 @@
         <h2>About DAC</h2>
         <p>Here we come together with like-minded people who are focused towards building themselves and growing
           together strong along with their buddies. We focus particularly on confidence building, communication skills
-          and physical fitness.
-          And help you prepare for a future in Defence along with guidance from your seniors where you learn from those
-          who have walked the path before you.</p>
+          and physical fitness. And help you prepare for a future in Defence along with guidance from your seniors where
+          you learn from those who have walked the path before you.</p>
 
         <h3 class="mt-8">A Little About the History of Our Club</h3>
-        <p>Our founder, <strong>Mr. Rajnish Kumar Singh</strong>, was recently commissioned into the Indian Navy as a
-          <strong>Sub-Lieutenant</strong>, and many seniors are selected into the academies every year.
+        <p>Our founder, <strong>Mr. Rajnish Kumar Singh</strong>, was recently commissioned into the Indian Navy
+          as a <strong>Sub-Lieutenant</strong>, and many seniors are selected into the academies every year.
         </p>
         <p class="mb-2">To name a few:</p>
         <p><strong>Cdt. Sawailal Suthar</strong> was recommended for the Indian Navy (SSC Tech) and the Air Force (NCC
@@ -358,7 +358,7 @@
 
     function setMenu(open) {
       menu.classList.toggle('hidden', !open);
-      btn.setAttribute('aria-expanded', open);  
+      btn.setAttribute('aria-expanded', open);
     }
 
     btn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
