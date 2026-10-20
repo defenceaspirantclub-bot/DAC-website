@@ -8,6 +8,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Source+Serif+4:wght@400;600&display=swap"
     rel="stylesheet">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="dist/output.css">
 </head>
 
@@ -22,7 +23,7 @@
         <span class="font-display text-2xl font-bold tracking-wider">DAC</span>
       </a>
 
-      <ul class="hidden items-center gap-6 text-[15px] font-medium lg:flex">
+      <ul class="hidden items-center gap-5 text-[15px] font-medium lg:flex">
         <li><a href="#about" class="nav-link">About DAC</a></li>
         <li><a href="#gallery" class="nav-link">Gallery</a></li>
         <li><a href="#ncc" class="nav-link">NCC &amp; Forces</a></li>
@@ -30,6 +31,7 @@
         <li><a href="#events" class="nav-link">Events</a></li>
         <li><a href="#visits" class="nav-link">Visits</a></li>
         <li><a href="#national" class="nav-link">National Days</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
 
       <button id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden">
@@ -50,6 +52,7 @@
         <li><a href="#events" class="block py-1">Events</a></li>
         <li><a href="#visits" class="block py-1">Visits</a></li>
         <li><a href="#national" class="block py-1">National Days</a></li>
+        <li><a href="#contact" class="block py-1">Contact</a></li>
       </ul>
     </div>
   </header>
@@ -60,11 +63,16 @@
     <!-- HERO -->
     <section class="bg-olive px-5 pt-32 pb-20 text-on-olive">
       <div class="mx-auto grid max-w-5xl items-center gap-9 sm:grid-cols-[auto_1fr]">
-        <img src="assets/logo/dac_logo.png" alt="DAC logo" width="450" height="470" class="h-auto w-48 sm:w-60 md:w-72">
+        <img src="assets/logo/DAC_LOGO.png" alt="DAC logo" width="450" height="470" class="h-auto w-48 sm:w-60 md:w-72">
         <div>
+          <p class="eyebrow">AISSMS IOIT · Pune</p>
           <h1 class="text-[clamp(3rem,11vw,7rem)] font-extrabold uppercase">Defence Aspirant Club</h1>
           <p class="text-xl opacity-90">A student community that trains, guides and motivates young people who want
             to serve in the Indian Armed Forces.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#contact" class="btn btn-primary">Join DAC</a>
+            <a href="#about" class="btn btn-ghost">Our story</a>
+          </div>
         </div>
       </div>
     </section>
@@ -72,7 +80,8 @@
 
     <!-- ABOUT -->
     <section id="about" class="border-t border-line px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">01 · Who we are</p>
         <h2>About DAC</h2>
         <p>Here we come together with like-minded people who are focused towards building themselves and growing
           together strong along with their buddies. We focus particularly on confidence building, communication skills
@@ -112,7 +121,8 @@
 
     <!-- GALLERY -->
     <section id="gallery" class="border-t border-line bg-surface px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">02 · In pictures</p>
         <h2>Gallery</h2>
         <p>Moments from our drills, lectures, visits and celebrations.</p>
         <div class="mt-7 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
@@ -148,7 +158,8 @@
 
     <!-- NCC -->
     <section id="ncc" class="border-t border-line px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">03 · The forces</p>
         <h2>About NCC and the Defence Forces</h2>
         <p>The National Cadet Corps (NCC) is the youth wing of the Indian Armed Forces, with Army, Naval and Air
           Wings. Its motto is “Unity and Discipline.” Cadets learn drill, leadership, weapon training and social
@@ -179,7 +190,8 @@
 
     <!-- SSB -->
     <section id="ssb" class="border-t border-line bg-surface px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">04 · Preparation</p>
         <h2>SSB Interview Guidance</h2>
         <p>The Services Selection Board (SSB) is a five-day assessment of personality, not just knowledge. We
           prepare cadets for each stage through regular practice.</p>
@@ -214,7 +226,8 @@
 
     <!-- EVENTS -->
     <section id="events" class="border-t border-line px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">05 · What's next</p>
         <h2>Upcoming Events</h2>
         <p>Lectures and sessions by recommended candidates, serving officers and veterans.</p>
         <ul class="mt-7 grid gap-3">
@@ -248,7 +261,8 @@
 
     <!-- VISITS -->
     <section id="visits" class="border-t border-line bg-surface px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">06 · In the field</p>
         <h2>Visits</h2>
         <p>Seeing the forces up close is the best motivation. DAC members visit defence institutions and events.</p>
         <div class="card-grid">
@@ -271,7 +285,8 @@
 
     <!-- NATIONAL DAYS -->
     <section id="national" class="border-t border-line px-5 py-18">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">07 · Celebrations</p>
         <h2>Republic Day and Independence Day</h2>
         <p>Every year DAC marks 26 January and 15 August with the respect they deserve. Our members take part and
           lead the programme.</p>
@@ -300,17 +315,40 @@
 
 
   <!-- FOOTER -->
-  <footer class="bg-olive px-5 pt-11 pb-[calc(2.75rem+env(safe-area-inset-bottom))] text-center text-on-olive">
-    <p class="mx-auto my-0 space-x-2">
-      <a href="#contact" class="hover:underline">Contact Us</a>
-      <span>·</span>
-      <a href="https://www.instagram.com/aissms_defence_aspirant_club/" target="_blank" rel="noopener noreferrer" class="hover:underline">
-        Instagram
+  <footer id="contact"
+    class="bg-olive px-5 pt-14 pb-[calc(2.75rem+env(safe-area-inset-bottom))] text-center text-on-olive">
+
+    <p class="eyebrow">Contact</p>
+    <h2 class="text-3xl">Get in touch</h2>
+
+    <div class="mt-6 flex items-center justify-center gap-5">
+
+      <a href="mailto:defenceaspirantclub@gmail.com?subject=Enquiry%20about%20DAC" aria-label="Email DAC"
+        class="icon-btn">
+        <svg width="24" height="24" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
       </a>
-    </p>
-    <p class="mx-auto my-0 mt-2">Defence Aspirant Club (DAC)</p>
+
+      <a href="https://www.instagram.com/aissms_defence_aspirant_club/" target="_blank" rel="noopener noreferrer"
+        aria-label="DAC on Instagram" class="icon-btn">
+        <svg width="24" height="24" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </a>
+    </div>
+
+    <p class="mx-auto mt-4 text-base opacity-90">defenceaspirantclub@gmail.com</p>
+
+    <div class="mx-auto mt-10 max-w-5xl border-t border-on-olive/20 pt-6">
+      <p class="mx-auto text-sm opacity-70">&copy; 2026 Defence Aspirant Club (DAC)</p>
+    </div>
   </footer>
-  
 
 
   <!-- JS Script -->
@@ -320,11 +358,23 @@
 
     function setMenu(open) {
       menu.classList.toggle('hidden', !open);
-      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-expanded', open);  
     }
 
     btn.addEventListener('click', () => setMenu(menu.classList.contains('hidden')));
     menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    // Scroll reveal: fade sections in once as they enter the screen
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 </body>
 
