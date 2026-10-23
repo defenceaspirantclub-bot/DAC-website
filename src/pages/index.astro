@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <section class="bg-olive px-5 pt-32 pb-20 text-on-olive">
+      <div
+        class="mx-auto grid max-w-5xl items-center gap-9 sm:grid-cols-[auto_1fr]"
+      >
+        <img
+          src="assets/logo/DAC_LOGO.png"
+          alt="DAC logo"
+          width="450"
+          height="470"
+          class="h-auto w-48 sm:w-60 md:w-72"
+        />
+        <div>
+          <h1 class="text-[clamp(3rem,11vw,7rem)] font-extrabold uppercase">
+            Defence Aspirant Club
+          </h1>
+          <p class="text-xl opacity-90">
+            A student community that trains, guides and motivates young people
+            who want to serve in the Indian Armed Forces.
+          </p>
+
+          <!-- Buttons -->
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="/contact/" class="btn btn-primary">Join DAC</a>
+            <a href="/about-dac" class="btn btn-ghost">Our story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
