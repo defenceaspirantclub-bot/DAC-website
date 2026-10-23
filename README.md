@@ -4,6 +4,8 @@ Official website of the **Defence Aspirant Club (DAC)** at AISSMS.
 
 The website is built using **Astro** with **Tailwind CSS v4** and is currently a static site. The project is structured so that it can be expanded in the future with backend services, databases, authentication, event registration, and other features.
 
+## Please Go through the [contribution guidelines](#contribution-guidelines) properly, before making contribution!
+
 ## Tech Stack
 
 - **Astro** — Static site framework
