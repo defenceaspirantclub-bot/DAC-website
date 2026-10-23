@@ -1,27 +1,19 @@
 {
-  "name": "dac-website",
-  "version": "1.0.0",
-  "description": "Static website. No build step. Open `index.html` in a browser to preview.",
-  "main": "index.js",
+  "name": "dac_astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/defenceaspirantclub-bot/DAC-website.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/defenceaspirantclub-bot/DAC-website/issues"
-  },
-  "homepage": "https://github.com/defenceaspirantclub-bot/DAC-website#readme",
   "dependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
     "tailwindcss": "^4.3.3"
   }
 }
