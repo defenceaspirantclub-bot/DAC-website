@@ -10,8 +10,7 @@ The website is built using **Astro** with **Tailwind CSS v4** and is currently a
 
 - **Astro** — Static site framework
 - **Tailwind CSS v4** — Styling
-- **JavaScript** — Interactive functionality
-- **HTML/CSS** — Website structure and styling
+- **TypeScript / JavaScript** — Content data and interactive functionality
 - **Netlify** — Deployment and preview
 
 ## Project Structure
@@ -30,7 +29,11 @@ dac_website/
 │
 ├── src/
 │   ├── components/
-│   │   └── Navbar.astro
+│   │   ├── Navbar.astro
+│   │   └── Footer.astro
+│   │
+│   ├── data/
+│   │   └── site.ts
 │   │
 │   ├── layouts/
 │   │   └── Layout.astro
@@ -43,7 +46,8 @@ dac_website/
 │   │   ├── ssb-guidance.astro
 │   │   ├── events.astro
 │   │   ├── visits.astro
-│   │   ├── national-days.astr0
+│   │   ├── national-days.astro
+│   │   └── 404.astro
 │   │
 │   └── styles/
 │       └── global.css
@@ -58,8 +62,6 @@ dac_website/
 
 ## Website Pages
 
-The current website contains the following pages:
-
 | Page          | Route             | Purpose                                 |
 | ------------- | ----------------- | --------------------------------------- |
 | Home          | `/`               | Introduction to DAC                     |
@@ -70,6 +72,9 @@ The current website contains the following pages:
 | Events        | `/events/`        | Club events and activities              |
 | Visits        | `/visits/`        | Defence and institutional visits        |
 | National Days | `/national-days/` | National days and related activities    |
+| 404           | any unknown URL   | "Page not found" page                   |
+
+There is no separate Contact page. Contact details and social links live in the footer, which appears on every page.
 
 ## Getting Started
 
@@ -120,9 +125,7 @@ Astro will provide a local development URL, normally:
 http://localhost:4321
 ```
 
-The development server automatically reloads the website when files are changed.
-
-You do **not** need to run a separate Python server.
+The development server automatically reloads the website when files are changed. You do **not** need a separate server.
 
 ## Production Build
 
@@ -132,13 +135,7 @@ Before committing major changes or deploying the website, test the production bu
 npm run build
 ```
 
-Astro generates the static website inside:
-
-```text
-dist/
-```
-
-The `dist/` directory is generated automatically and should **not** be committed to Git.
+Astro generates the static website inside `dist/`. This directory is generated automatically and should **not** be committed to Git.
 
 To preview the production build locally:
 
@@ -164,7 +161,7 @@ git checkout -b feature/gallery-update
 
 ### 2. Make your changes
 
-Edit the relevant Astro, CSS, JavaScript, or asset files.
+Edit the relevant Astro, data, CSS, or asset files.
 
 ### 3. Test locally
 
@@ -215,26 +212,61 @@ Another teammate should review the changes before they are merged.
 | ----------------------------------------- | ------------------------------- |
 | Home page                                 | `src/pages/index.astro`         |
 | About DAC                                 | `src/pages/about-dac.astro`     |
-| Gallery                                   | `src/pages/gallery.astro`       |
 | NCC & Forces                              | `src/pages/ncc-forces.astro`    |
-| SSB Guidance                              | `src/pages/ssb-guidance.astro`  |
-| Events                                    | `src/pages/events.astro`        |
 | Visits                                    | `src/pages/visits.astro`        |
 | National Days                             | `src/pages/national-days.astro` |
+| 404 page                                  | `src/pages/404.astro`           |
+| Events list                               | `events` in `src/data/site.ts`  |
+| SSB steps                                 | `ssbSteps` in `src/data/site.ts`|
+| Gallery photos                            | `gallery` in `src/data/site.ts` |
+| Email / social links (footer icons)       | `socials` in `src/data/site.ts` |
+| Footer layout                             | `src/components/Footer.astro`   |
 | Navigation bar                            | `src/components/Navbar.astro`   |
-| Common page layout                        | `src/layouts/Layout.astro`      |
+| Common page layout, meta tags, favicons   | `src/layouts/Layout.astro`      |
 | Global colours, fonts and reusable styles | `src/styles/global.css`         |
 | Logo and images                           | `public/assets/`                |
 
-## Assets
+## Editing Content (`src/data/site.ts`)
 
-Website assets are stored inside:
+Events, SSB steps, gallery items and social links are stored as simple lists in `src/data/site.ts`. The pages loop over these lists, so you do not need to touch the page HTML.
 
-```text
-public/assets/
+### Add an event
+
+Add one object to `events`:
+
+```ts
+{
+  date: "15 Nov",
+  year: "2026",
+  title: "Event title",
+  text: "Short description, venue and time.",
+}
 ```
 
-For example:
+### Add a gallery photo
+
+1. Put the image in `public/assets/images/gallery/`.
+2. Add one object to `gallery`:
+
+```ts
+{
+  src: "/assets/images/gallery/nda_visit_2026.webp",
+  alt: "Describe the photo",
+  caption: "NDA visit",
+}
+```
+
+Leave `src` empty (`""`) to show a placeholder.
+
+### Add or change a social link
+
+Edit or add an object in `socials`. Each entry has `name`, `label`, `href`, `external`, `icon` (SVG paths), and optionally `filled: true` for solid icons. Official brand icons can be taken from [simpleicons.org](https://simpleicons.org). Those are filled icons, so set `filled: true`.
+
+Invite links (WhatsApp, Telegram) can be reset by their admins. If a button stops working, check the link first.
+
+## Assets
+
+Website assets are stored inside `public/assets/`, for example:
 
 ```text
 public/assets/logo/DAC_LOGO.png
@@ -243,47 +275,31 @@ public/assets/images/hero/
 public/assets/images/team/
 ```
 
+In code, always refer to them with a leading slash, for example `/assets/logo/DAC_LOGO.png`.
+
 When adding photos:
 
 - Prefer **WebP** where practical.
 - Keep image file sizes reasonably small.
-- Avoid unnecessarily large images.
 - Use consistent and descriptive file names.
 - Remember that file names are **case-sensitive** when deployed.
 
-For example:
-
-```text
-NDA_Visit_2026.webp
-```
-
-and
-
-```text
-nda_visit_2026.webp
-```
-
-are different file names.
+For example, `NDA_Visit_2026.webp` and `nda_visit_2026.webp` are different files.
 
 ## Styling
 
-Global styling is handled by:
+Global styling is handled by `src/styles/global.css`.
 
-```text
-src/styles/global.css
-```
-
-The project uses **Tailwind CSS v4** along with custom DAC design variables and reusable classes.
+The project uses **Tailwind CSS v4** along with custom DAC design variables (colours, fonts) and reusable classes. Dark mode works by swapping the colour variables.
 
 Common reusable styles include:
 
-- `.btn`
-- `.btn-primary`
-- `.btn-ghost`
+- `.btn`, `.btn-primary`, `.btn-ghost`
+- `.icon-btn` (footer social icons)
 - `.nav-link`
-- `.card`
-- `.card-grid`
+- `.card`, `.card-grid`
 - `.eyebrow`
+- `.ssb`, `.ssb-item` (numbered SSB days)
 
 Do not edit generated files inside `dist/` manually.
 
@@ -302,37 +318,22 @@ dist/
 
 ### Do not work directly on `main`
 
-Use a feature branch:
-
-```bash
-git checkout -b feature/<short-name>
-```
-
-Then create a Pull Request when the work is ready.
+Use a feature branch, then create a Pull Request when the work is ready.
 
 ### Preserve the existing Git history
 
-This repository already contains the project's Git history and contributors.
-
-Do **not** delete the `.git/` directory or initialize a new repository when working on the project.
+This repository already contains the project's Git history and contributors. Do **not** delete the `.git/` directory or initialize a new repository.
 
 ## Deployment
 
-The website is currently deployed through **Netlify** for preview and hosting.
+The website is deployed through **Netlify**.
 
-The project is an Astro static site. The production deployment uses:
+| Setting           | Value           |
+| ----------------- | --------------- |
+| Build command     | `npm run build` |
+| Publish directory | `dist`          |
 
-```bash
-npm run build
-```
-
-and the generated output is placed in:
-
-```text
-dist/
-```
-
-Netlify should be configured to build the project from the repository rather than serving an old manually generated `dist/output.css`.
+Astro builds `404.astro` into `dist/404.html`, which Netlify serves automatically for unknown URLs.
 
 ## Troubleshooting
 
@@ -344,25 +345,20 @@ Netlify should be configured to build the project from the repository rather tha
 | Production build fails             | Run `npm run build` and fix the reported error                        |
 | Image works locally but not online | Check the file name and capitalization                                |
 | Page route gives 404               | Check that the corresponding `.astro` file exists inside `src/pages/` |
+| Event / gallery item not showing   | Check for a missing comma or bracket in `src/data/site.ts`            |
+| Social icon looks wrong            | Solid icons need `filled: true` in `socials`                          |
 | Changes are not appearing          | Refresh the browser and check the Astro terminal for errors           |
 | Port 4321 is already in use        | Astro will normally offer another available port                      |
 
 ## Future Ideas
 
-The website is currently static, but the project can be expanded in the future.
-
-Possible features include:
-
 - Photo lightbox
+- Google Form / online membership
 - Event registration
-- Member login
-- Member profiles
+- Member login and profiles
 - SSB guidance/blog system
-- Admin dashboard
-- Event management
-- Database integration
-- Backend/API
-- Online membership system
+- Admin dashboard and event management
+- Database integration and backend/API
 - Separate pages for additional DAC activities
 - Dynamic announcements and updates
 
