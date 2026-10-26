@@ -1,0 +1,47 @@
+---
+import { socials } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="bg-olive px-5 pt-14 pb-[calc(2.75rem+env(safe-area-inset-bottom))] text-center text-on-olive"
+>
+  <p class="eyebrow text-3xl">Get in touch</p>
+
+  <div class="mt-6 flex flex-wrap items-center justify-center gap-5">
+    {
+      socials.map((s) => (
+        <a
+          href={s.href}
+          aria-label={s.label}
+          title={s.name}
+          class="icon-btn"
+          target={s.external ? "_blank" : undefined}
+          rel={s.external ? "noopener noreferrer" : undefined}
+        >
+          <svg
+            width="24"
+            height="24"
+            class="h-6 w-6"
+            viewBox="0 0 24 24"
+            fill={s.filled ? "currentColor" : "none"}
+            stroke={s.filled ? "none" : "currentColor"}
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            set:html={s.icon}
+          />
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="mx-auto mt-4 text-base opacity-90">defenceaspirantclub@gmail.com</p>
+
+  <div class="mx-auto mt-10 max-w-5xl border-t border-on-olive/20 pt-6">
+    <p class="mx-auto text-sm opacity-70">
+      &copy; {year} Defence Aspirant Club (DAC), AISSMS
+    </p>
+  </div>
+</footer>
