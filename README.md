@@ -43,8 +43,7 @@ dac_website/
 │   │   ├── ssb-guidance.astro
 │   │   ├── events.astro
 │   │   ├── visits.astro
-│   │   ├── national-days.astro
-│   │   └── contact.astro
+│   │   ├── national-days.astr0
 │   │
 │   └── styles/
 │       └── global.css
@@ -71,7 +70,6 @@ The current website contains the following pages:
 | Events        | `/events/`        | Club events and activities              |
 | Visits        | `/visits/`        | Defence and institutional visits        |
 | National Days | `/national-days/` | National days and related activities    |
-| Contact       | `/contact/`       | Contact and social media information    |
 
 ## Getting Started
 
@@ -223,7 +221,6 @@ Another teammate should review the changes before they are merged.
 | Events                                    | `src/pages/events.astro`        |
 | Visits                                    | `src/pages/visits.astro`        |
 | National Days                             | `src/pages/national-days.astro` |
-| Contact                                   | `src/pages/contact.astro`       |
 | Navigation bar                            | `src/components/Navbar.astro`   |
 | Common page layout                        | `src/layouts/Layout.astro`      |
 | Global colours, fonts and reusable styles | `src/styles/global.css`         |

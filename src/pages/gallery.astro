@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { gallery } from "../data/site";
 ---
 
 <Layout title="Gallery | Defence Aspirant Club">
@@ -9,42 +10,28 @@ import Layout from "../layouts/Layout.astro";
         <p class="eyebrow">---In pictures---</p>
         <h2>Gallery</h2>
 
-        <p>
-          Moments from our drills, lectures, visits and celebrations.
-        </p>
+        <p>Moments from our drills, lectures, visits and celebrations.</p>
 
-        <div class="mt-7 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
-
-          <figure class="flex aspect-4/3 items-end border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
-            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
-              Morning PT and drill
-            </figcaption>
-          </figure>
-
-          <figure class="flex aspect-4/3 items-end border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
-            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
-              Guest lecture
-            </figcaption>
-          </figure>
-
-          <figure class="flex aspect-4/3 items-end border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
-            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
-              Mock GTO
-            </figcaption>
-          </figure>
-
-          <figure class="flex aspect-4/3 items-end border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
-            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
-              NDA visit
-            </figcaption>
-          </figure>
-
-          <figure class="flex aspect-4/3 items-end border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
-            <figcaption class="w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
-              Mock SSB interview
-            </figcaption>
-          </figure>
-
+        <div
+          class="mt-7 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3"
+        >
+          {
+            gallery.map((g) => (
+              <figure class="relative flex aspect-4/3 items-end overflow-hidden border border-line bg-[repeating-linear-gradient(135deg,var(--surface)_0_14px,var(--page)_14px_28px)]">
+                {g.src && (
+                  <img
+                    src={g.src}
+                    alt={g.alt}
+                    loading="lazy"
+                    class="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+                <figcaption class="relative w-full bg-olive px-3 py-2 text-[.95rem] text-on-olive">
+                  {g.caption}
+                </figcaption>
+              </figure>
+            ))
+          }
         </div>
       </div>
     </section>
