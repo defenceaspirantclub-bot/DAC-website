@@ -52,7 +52,7 @@ export const gallery = [
   { src: "/assets/images/nda-visit.jpg", alt: "Group photo during the NDA visit", caption: "NDA Visit" },
 ];
 
-// Contact Links go here
+// Contact Links and Logos GO HERE
 export const socials = [
   {
     name: "Email",
