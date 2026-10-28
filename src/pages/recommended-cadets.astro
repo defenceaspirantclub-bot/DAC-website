@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Edit this list to add or change cadets. The first one is shown as the featured card.
+// pos = which part of the photo stays visible in the card.
+const cadets = [
+  {
+    name: "Cdt. Sanket Shinde",
+    photo: "/assets/images/sanket-shinde.jpg",
+    pos: "center 30%",
+    badge: "AIR 73",
+    entry: "Indian Military Academy (IMA) through CDS",
+    details: [
+      "Computer Department, AISSMS COE",
+      "NCC Air Wing Cadet, 3rd MAH Air Squadron",
+      "Recommended at 32 SSB Jalandhar with All India Rank 73",
+    ],
+  },
+  {
+    name: "Cdt. Suyash Patil",
+    photo: "/assets/images/suyash-patil.jpg",
+    pos: "center 30%",
+    entry: "Indian Army (SSC Tech)",
+    details: [],
+  },
+  {
+    name: "Cdt. Sawailal Suthar",
+    photo: "/assets/images/sawailal-suthar.jpg",
+    pos: "center 35%",
+    badge: "2nd recommendation",
+    entry: "NCC Air Special Entry, Mysore",
+    details: ["Earlier recommended for the Navy Tech Entry"],
+  },
+  {
+    name: "Rajnish Kumar Singh",
+    photo: "/assets/images/rajnish-kumar-singh.jpg",
+    pos: "center 45%",
+    entry: "Indian Navy",
+    details: [],
+  },
+  {
+    name: "Cdt. Jayesh Bhaygude",
+    photo: "/assets/images/jayesh-bhaygude.jpg",
+    pos: "center 30%",
+    entry: "", // add his entry here, for example "Indian Air Force"
+    details: ["Electronics and Telecommunication Department, AISSMS IOIT"],
+  },
+];
+const [featured, ...others] = cadets;
+---
+
+<Layout title="Recommended Cadets | Defence Aspirant Club">
+  <main>
+    <section class="border-t border-line bg-surface px-5 py-18">
+      <div class="mx-auto max-w-5xl reveal">
+        <p class="eyebrow">---Our pride---</p>
+        <h2>Recommended Cadets</h2>
+        <p>
+          Hard work, discipline and the right guidance turn into results. These
+          members of DAC were recommended by the Services Selection Boards.
+          Congratulations to all of them, and best wishes for the journey ahead.
+          Jai Hind!
+        </p>
+
+        <article class="feat border border-line">
+          <img src={featured.photo} alt={featured.name} style={`object-position:${featured.pos}`} />
+          <div class="info">
+            <p class="eyebrow">Featured</p>
+            <h3>{featured.name}</h3>
+            {featured.badge && <span class="badge">{featured.badge}</span>}
+            <p class="entry">Recommended for {featured.entry}</p>
+            <ul>{featured.details.map((d) => <li>{d}</li>)}</ul>
+          </div>
+        </article>
+
+        <div class="grid">
+          {
+            others.map((c) => (
+              <article class="card border border-line">
+                <img src={c.photo} alt={c.name} loading="lazy" style={`object-position:${c.pos}`} />
+                <div class="info">
+                  <h3>{c.name}</h3>
+                  {c.badge && <span class="badge">{c.badge}</span>}
+                  {c.entry && <p class="entry">Recommended for {c.entry}</p>}
+                  {c.details.length > 0 && <ul>{c.details.map((d) => <li>{d}</li>)}</ul>}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .feat { display: grid; grid-template-columns: 1fr 1.1fr; margin-top: 32px; background: var(--page); }
+  .feat img { width: 100%; height: 100%; min-height: 360px; aspect-ratio: 1/1; object-fit: cover; display: block; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; margin-top: 28px; }
+  .card { background: var(--page); }
+  .card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+  .info { padding: 20px 22px; }
+  .info h3 { margin: 0 0 6px; font-size: 1.6rem; }
+  .feat .info h3 { font-size: 2.1rem; }
+  .entry { margin: 8px 0 0; font-weight: 600; }
+  .info ul { margin: 10px 0 0; padding-left: 1.2em; font-size: .98rem; }
+  .info li { margin: 3px 0; }
+  .badge { display: inline-block; margin: 2px 0 4px; padding: 2px 10px; border: 1px solid currentColor; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; }
+  @media (max-width: 720px) { .feat { grid-template-columns: 1fr; } .feat img { min-height: 0; } }
+</style>
