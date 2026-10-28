@@ -48,7 +48,6 @@ export const gallery = [
   { src: "/assets/images/physical-training.jpg", alt: "Members stretching in a circle on the ground", caption: "Physical Training" },
   { src: "/assets/images/fall-in.jpg", alt: "Cadets falling in line for instructions", caption: "Fall In" },
   { src: "/assets/images/mock-ssb.jpg", alt: "Group discussion in a circle for mock SSB", caption: "Mock SSB Interview" },
-  { src: "/assets/images/basketball.jpg", alt: "Members playing basketball", caption: "Basketball" },
   { src: "/assets/images/games.jpg", alt: "Members playing basketball on the court", caption: "Games and Sports" },
   { src: "/assets/images/nda-visit.jpg", alt: "Group photo during the NDA visit", caption: "NDA Visit" },
 ];
