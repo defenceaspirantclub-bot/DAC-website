@@ -1,48 +1,174 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Edit this list to add or change events. Newest first.
+// pos = which part of the photo stays visible in the card (the zoomed view always shows the full photo).
+const events = [
+  {
+    id: "independence-day-2026",
+    kind: "Independence Day",
+    date: "15 August 2026",
+    src: "/assets/images/independence-day-2026.jpg",
+    alt: "DAC members and NCC cadets in front of the aircraft display at AISSMS",
+    pos: "center",
+    summary:
+      "DAC members and NCC cadets from the Army, Navy and Air Wings marked the 80th Independence Day on the AISSMS campus.",
+    highlights: ["Flag hoisting and national anthem", "Cadets in ceremonial uniform", "Group photo at the aircraft display"],
+  },
+  {
+    id: "republic-day-2026",
+    kind: "Republic Day",
+    date: "26 January 2026",
+    src: "/assets/images/republic-day-2026.jpg",
+    alt: "Republic Day 2026 group photo of DAC members and cadets",
+    pos: "center",
+    summary:
+      "On Republic Day 2026, DAC members stood together with NCC cadets to honour the Constitution and the nation.",
+    highlights: ["Flag hoisting and national anthem", "Cadets in Army, Navy and Air Wing uniform", "Tributes to the Constitution"],
+  },
+  {
+    id: "republic-day-2025",
+    kind: "Republic Day",
+    date: "26 January 2025",
+    src: "/assets/images/republic-day-2025.jpg",
+    alt: "Republic Day 2025 group photo of DAC members and cadets",
+    pos: "center",
+    summary:
+      "Republic Day 2025 was celebrated on the AISSMS campus with cadets and DAC members in uniform.",
+    highlights: ["Flag hoisting and national anthem", "Cadets in ceremonial uniform", "Group photo on campus"],
+  },
+  {
+    id: "republic-day-2024",
+    kind: "Republic Day",
+    date: "26 January 2024",
+    src: "/assets/images/republic-day-2024.jpg",
+    alt: "Republic Day 2024 group photo of DAC members and cadets on the steps",
+    pos: "center 35%",
+    summary:
+      "DAC members and cadets gathered for Republic Day 2024 and posed together on the college steps.",
+    highlights: ["Flag hoisting and national anthem", "Cadets in ceremonial uniform", "Group photo on the college steps"],
+  },
+  {
+    id: "republic-day-2023",
+    kind: "Republic Day",
+    date: "26 January 2023",
+    src: "/assets/images/republic-day-2023.jpg",
+    alt: "Republic Day 2023 group photo of DAC members and cadets",
+    pos: "center",
+    summary:
+      "Our Republic Day 2023 celebration brought DAC members and NCC cadets together in front of the aircraft display on campus.",
+    highlights: ["Flag hoisting and national anthem", "Cadets in Army, Navy and Air Wing uniform", "Group photo at the aircraft display"],
+  },
+];
 ---
 
 <Layout title="National Days | Defence Aspirant Club">
   <main>
-    <section class="border-t border-line px-5 py-18">
+    <section class="border-t border-line bg-surface px-5 py-18">
       <div class="mx-auto max-w-5xl reveal">
-        <p class="eyebrow">---Celebrations---</p>
-        <h2>Republic Day and Independence Day</h2>
+        <p class="eyebrow">---Republic Day and Independence Day---</p>
+        <h2>National Days</h2>
         <p>
           Every year DAC marks 26 January and 15 August with the respect they
-          deserve. Our members take part and lead the programme.
+          deserve. Here is how we celebrated, year by year. Click any photo to
+          see it full size.
         </p>
-        <div class="card-grid">
-          <div class="card">
-            <h3>Flag hoisting</h3>
-            <p>
-              Ceremonial flag hoisting, national anthem and a guard of honour by
-              DAC members.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Drill and march past</h3>
-            <p>
-              Our members present a precise march past they have practised for
-              weeks.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Tributes and talks</h3>
-            <p>
-              Tributes to martyrs, patriotic speeches, songs and an address by a
-              veteran guest.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Community service</h3>
-            <p>
-              Blood donation, tree plantation and cleanliness drives in the
-              spirit of service.
-            </p>
-          </div>
+
+        <nav class="chips" aria-label="Jump to a celebration">
+          {events.map((e) => <a href={`#${e.id}`}>{e.kind === "Republic Day" ? "Republic Day" : "Independence Day"} {e.date.split(" ").pop()}</a>)}
+        </nav>
+
+        <div class="mt-9 grid gap-8">
+          {
+            events.map((e, i) => (
+              <article id={e.id} class="ev border border-line">
+                <button type="button" class="photo" data-lb={i} aria-label={`Open larger photo: ${e.kind} ${e.date}`}>
+                  <img src={e.src} alt={e.alt} loading="lazy" style={`object-position:${e.pos}`} />
+                  <span class="zoom" aria-hidden="true">Click to enlarge</span>
+                </button>
+                <div class="info">
+                  <p class="eyebrow">{e.kind}</p>
+                  <h3>{e.date}</h3>
+                  <p>{e.summary}</p>
+                  <ul>
+                    {e.highlights.map((h) => <li>{h}</li>)}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
+
+    <dialog id="lb" aria-label="Photo viewer">
+      <button type="button" class="x" id="lb-close" aria-label="Close">&times;</button>
+      <button type="button" class="nav prev" id="lb-prev" aria-label="Previous photo">&lsaquo;</button>
+      <figure>
+        <img id="lb-img" alt="" />
+        <figcaption id="lb-cap"></figcaption>
+      </figure>
+      <button type="button" class="nav next" id="lb-next" aria-label="Next photo">&rsaquo;</button>
+    </dialog>
   </main>
 </Layout>
+
+<style>
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chips a { padding: 4px 12px; border: 1px solid currentColor; font-size: .9rem; text-decoration: none; opacity: .85; }
+  .chips a:hover { opacity: 1; }
+  .ev { display: grid; grid-template-columns: 1.2fr 1fr; background: var(--page); scroll-margin-top: 90px; }
+  .photo { position: relative; display: block; padding: 0; border: 0; cursor: zoom-in; aspect-ratio: 4/3; overflow: hidden; background: #111; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .photo:hover img { transform: scale(1.03); }
+  .zoom { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,.65); color: #fff; font-size: .85rem; padding: 3px 10px; }
+  .info { padding: 24px; }
+  .info h3 { margin: 0 0 8px; font-size: 1.7rem; }
+  .info ul { margin: 12px 0 0; padding-left: 1.2em; }
+  .info li { margin: 4px 0; }
+  @media (max-width: 720px) { .ev { grid-template-columns: 1fr; } }
+
+  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; }
+  dialog::backdrop { background: rgba(0,0,0,.88); }
+  dialog[open] { display: flex; align-items: center; justify-content: center; }
+  figure { margin: 0; max-width: 92vw; text-align: center; color: #fff; }
+  figure img { max-width: 92vw; max-height: 80vh; object-fit: contain; }
+  figcaption { margin-top: 10px; font-size: 1rem; }
+  .x, .nav { position: absolute; background: rgba(0,0,0,.55); color: #fff; border: 0; font-size: 2.2rem; line-height: 1; width: 48px; height: 48px; cursor: pointer; }
+  .x { top: 16px; right: 16px; }
+  .nav { top: 50%; transform: translateY(-50%); }
+  .prev { left: 12px; } .next { right: 12px; }
+</style>
+
+<script>
+  const dlg = document.getElementById("lb") as HTMLDialogElement;
+  const img = document.getElementById("lb-img") as HTMLImageElement;
+  const cap = document.getElementById("lb-cap") as HTMLElement;
+  const btns = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-lb]"));
+  let cur = 0;
+
+  function show(i: number) {
+    cur = (i + btns.length) % btns.length;
+    const pic = btns[cur].querySelector("img") as HTMLImageElement;
+    const art = btns[cur].closest("article") as HTMLElement;
+    img.src = pic.src;
+    img.alt = pic.alt;
+    cap.textContent = (art.querySelector(".eyebrow")?.textContent ?? "") + " · " + (art.querySelector("h3")?.textContent ?? "");
+  }
+  btns.forEach((b, i) =>
+    b.addEventListener("click", () => {
+      show(i);
+      dlg.showModal();
+    })
+  );
+  document.getElementById("lb-close")!.addEventListener("click", () => dlg.close());
+  document.getElementById("lb-prev")!.addEventListener("click", () => show(cur - 1));
+  document.getElementById("lb-next")!.addEventListener("click", () => show(cur + 1));
+  dlg.addEventListener("click", (e) => {
+    if (e.target === dlg) dlg.close();
+  });
+  dlg.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(cur - 1);
+    if (e.key === "ArrowRight") show(cur + 1);
+  });
+</script>
